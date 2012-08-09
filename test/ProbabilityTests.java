@@ -2,6 +2,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class ProbabilityTests {
 
@@ -40,6 +41,18 @@ public class ProbabilityTests {
         Probability result = chanceOfGetting1.and(chanceOfGetting6);
 
         Assert.assertEquals(result, new Probability(1/36d));
+    }
+
+    @Test
+    public void shouldBeAbleToComputeORProbability()
+    {
+        //Given
+        Probability probabilityOfGettingOne=new Probability(1,6);
+        Probability probabilityOfGettingSix=new Probability(1,6);
+        //When
+        Probability result=probabilityOfGettingOne.or(probabilityOfGettingSix);
+        //Then
+        Assert.assertEquals(result, new Probability(11/36d));
     }
 
     @Test(expected = Exception.class)

@@ -3,6 +3,7 @@ public class Probability {
 
     private final double value;
     private static final int MAX_VALUE = 1;
+    private static final double EPSILON = 0.00000001;
 
     public Probability(double value){
         if(value > 1 || value < 0)
@@ -34,8 +35,7 @@ public class Probability {
 
         Probability that = (Probability) o;
 
-        if (Double.compare(that.value, value) != 0) return false;
-
+        if(Math.abs(this.value - that.value) > EPSILON) return false;
         return true;
     }
 
@@ -44,4 +44,11 @@ public class Probability {
         long temp = value != +0.0d ? Double.doubleToLongBits(value) : 0L;
         return (int) (temp ^ (temp >>> 32));
     }
+
+    public Probability or(Probability other) {
+        //return new Probability(value + other.value - this.and(other).value);
+        Probability probability = this.inverse().and(other.inverse());
+        return probability.inverse();
+    }
+
 }
