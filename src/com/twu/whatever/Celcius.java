@@ -2,27 +2,38 @@ package com.twu.whatever;
 
 public class Celcius implements Temperature {
     private double value;
+
     public Celcius(double value) {
         this.value = value;
     }
-
+                 //Baseunit is F
     @Override
     public double calculateValueInBaseUnit() {
-        return 1.8*value + 32;
+        return 1.8 * value + 32;
     }
 
     @Override
     public int compareTemperature(Temperature other) {
-        if(calculateValueInBaseUnit() > other.calculateValueInBaseUnit()) return 1;
-        if(calculateValueInBaseUnit() < other.calculateValueInBaseUnit()) return -1;
+        if (calculateValueInBaseUnit() > other.calculateValueInBaseUnit()) return 1;
+        if (calculateValueInBaseUnit() < other.calculateValueInBaseUnit()) return -1;
         return 0;
     }
 
     @Override
     public Object add(Temperature other, Class type) {
+        if (type.isInstance(new Celcius(1)))
+            return addHelper(other).convertToCelcius();
 
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        else
+            return addHelper(other);
     }
+
+
+
+    private Fahrenheit addHelper(Temperature other) {
+        return new Fahrenheit(this.calculateValueInBaseUnit() + other.calculateValueInBaseUnit());
+    }
+
 
     @Override
     public boolean equals(Object o) {

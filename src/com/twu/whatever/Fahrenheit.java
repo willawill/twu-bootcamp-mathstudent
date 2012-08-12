@@ -12,7 +12,7 @@ public class Fahrenheit implements Temperature {
     }
 
     public Celcius convertToCelcius(){
-        return new Celcius((value - 32)*5/9);
+        return new Celcius((value - 32) * 5/9);
     }
 
     @Override
