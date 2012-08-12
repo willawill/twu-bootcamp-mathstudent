@@ -13,7 +13,7 @@ public class VolumeTests {
         Volume volumeInLiter=new Volume(3.78, VolumeUnit.LITER);
         Volume volumeInGallon=new Volume(1,VolumeUnit.GALLON);
 
-        int result=volumeInGallon.compare(volumeInLiter);
+        int result=volumeInGallon.compareTemperature(volumeInLiter);
 
         assertThat(result,is(0));
     }
@@ -23,7 +23,7 @@ public class VolumeTests {
         Volume volumeInLiter=new Volume(1, VolumeUnit.LITER);
         Volume volumeInGallon=new Volume(1,VolumeUnit.GALLON);
 
-        int result=volumeInLiter.compare(volumeInGallon);
+        int result=volumeInLiter.compareTemperature(volumeInGallon);
 
         assertThat(result,is(-1));
     }
@@ -33,7 +33,7 @@ public class VolumeTests {
         Volume volumeInLiter=new Volume(5.78, VolumeUnit.LITER);
         Volume volumeInGallon=new Volume(1,VolumeUnit.GALLON);
 
-        int result=volumeInLiter.compare(volumeInGallon);
+        int result=volumeInLiter.compareTemperature(volumeInGallon);
 
         assertThat(result,is(1));
     }
@@ -44,7 +44,7 @@ public class VolumeTests {
         Volume volumeInLiter = new Volume(1, VolumeUnit.LITER);
 
         Volume result = volumeInLiter.add(volumeInGallon);
-        assertEquals(0, result.compare(new Volume((1*3.78)+1*1, VolumeUnit.LITER)));
+        assertEquals(0, result.compareTemperature(new Volume((1 * 3.78) + 1 * 1, VolumeUnit.LITER)));
 
 
     }

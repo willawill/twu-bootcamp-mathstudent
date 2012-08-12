@@ -13,7 +13,7 @@ public class LengthTests {
         Length lengthInFeet = new Length(1, LengthUnit.FEET);
         Length lengthInInches = new Length(12,LengthUnit.INCH);
 
-        int result = lengthInFeet.compare(lengthInInches);
+        int result = lengthInFeet.compareTemperature(lengthInInches);
 
         assertThat(result, is(0));
     }
@@ -23,7 +23,7 @@ public class LengthTests {
         Length lengthInCm = new Length(5, LengthUnit.CENTIMETER);
         Length lengthInInches = new Length(1,LengthUnit.INCH);
 
-        int result = lengthInCm.compare(lengthInInches);
+        int result = lengthInCm.compareTemperature(lengthInInches);
 
         assertThat(result, is(1));
 
@@ -34,7 +34,7 @@ public class LengthTests {
         Length lengthInCm = new Length(1, LengthUnit.CENTIMETER);
         Length lengthInMm = new Length(15,LengthUnit.MILLIMETER);
 
-        int result = lengthInCm.compare(lengthInMm);
+        int result = lengthInCm.compareTemperature(lengthInMm);
 
         assertThat(result, is(-1));
     }
@@ -46,7 +46,7 @@ public class LengthTests {
 
         Length result = length1.add(length2);
 
-        assertEquals(0, result.compare(new Length(4, LengthUnit.INCH)));
+        assertEquals(0, result.compareTemperature(new Length(4, LengthUnit.INCH)));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class LengthTests {
 
         Length result=lengthInInch.add(lengthInCentimeter);
 
-        assertEquals(0, result.compare(new Length(3, LengthUnit.INCH)));
+        assertEquals(0, result.compareTemperature(new Length(3, LengthUnit.INCH)));
     }
 
 

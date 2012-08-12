@@ -22,6 +22,7 @@ public class Length extends Unit{
 
     public Length add(Length another) {
 
-        return new Length(calculateValueFromBaseUnit(this.calculateValueInBaseUnit()+another.calculateValueInBaseUnit()), this.type);
+        return new Length(calculateValueFromBaseUnit(this.calculateValueInBaseUnit()+
+                          another.calculateValueInBaseUnit()), this.type);
     }
 }
